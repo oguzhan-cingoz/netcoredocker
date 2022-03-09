@@ -19,7 +19,7 @@ resource "aws_apprunner_service" "ronesans-apprunner" {
       access_role_arn = aws_iam_role.ronesans-ar-role.arn
     }
     image_repository {
-      image_identifier      = "545579686143.dkr.ecr.eu-west-1.amazonaws.com/ronesans-ecr:309"
+      image_identifier      = "public.ecr.aws/u3h5m1q5/ronesans-public-ecr:v1"
       image_repository_type = "ECR_PUBLIC"
       image_configuration {
         port = 5001
