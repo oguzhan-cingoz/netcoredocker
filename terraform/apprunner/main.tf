@@ -9,23 +9,24 @@ terraform {
 
 resource "aws_iam_role" "role" {
    name = "ronesans-apprunner-role"
-   assume_role_policy = {
-   "Version": "2012-10-17",
-   "Statement": [
-     {
-       "Action": "sts:AssumeRole",
-       "Principal": {
-         "Service": [
+   assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = [
            "build.apprunner.amazonaws.com",
            "tasks.apprunner.amazonaws.com"
          ]
-       },
-       "Effect": "Allow",
-       "Sid": ""
-     }
-   ]
- }  
+        }
+      },
+    ]
+  })
 }
+
 
 resource "aws_iam_role_policy_attachment" "ronesans-policy-attach" {
    role       = aws_iam_role.role.name
