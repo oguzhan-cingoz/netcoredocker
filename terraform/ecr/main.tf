@@ -8,12 +8,12 @@ terraform {
 }
 
 provider "aws" {
-  alias  = "eu_west_1"
-  region = "eu-west-1"
+  alias  = "us-west-2"
+  region = "us-west-2"
 }
 
 resource "aws_ecrpublic_repository" "ronesans-ecr-public" {
-  provider = aws.eu_west_1
+  provider = aws.us-west-2
 
   repository_name = "ronesans-ecr-public"
 }
