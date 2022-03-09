@@ -12,8 +12,8 @@ provider "aws" {
   region = "us-west-2"
 }
 
-resource "aws_ecrpublic_repository" "ronesans-ecr-public" {
+resource "aws_ecrpublic_repository" "ronesans-ecr-public2" {
   provider = aws.us-west-2
 
-  repository_name = "ronesans-ecr-public"
+  repository_name = "ronesans-ecr-public2"
 }
