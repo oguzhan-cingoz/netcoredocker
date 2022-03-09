@@ -14,7 +14,7 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'AWS-Ronesans-ECR'
-    repository: 'ronesans'
+    repository: 'ronesans-ecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
 
