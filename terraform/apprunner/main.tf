@@ -38,7 +38,7 @@ resource "aws_apprunner_service" "runner_service" {
       image_identifier      = "545579686143.dkr.ecr.eu-west-1.amazonaws.com/ronesans-ecr:309"
       image_repository_type = "ECR"
       image_configuration {
-        port = local.service_port
+        port = 5001
       }
     }
   }
