@@ -17,7 +17,7 @@ steps:
     provider: 'aws'
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-    backendServiceAWS: 'AWS-Cansel'
+    backendServiceAWS: 'AWS-Ronesans'
     backendAWSBucketName: 'ronesans-poc'
     backendAWSKey: 'ronesans-poc/ronesans-poc.tfstate'
 
@@ -27,7 +27,7 @@ steps:
     provider: 'aws'
     command: 'plan'
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-    environmentServiceNameAWS: 'AWS-Cansel'
+    environmentServiceNameAWS: 'AWS-Ronesans'
   enabled: false
 
 - task: TerraformTaskV2@2
@@ -36,4 +36,4 @@ steps:
     provider: 'aws'
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-    environmentServiceNameAWS: 'AWS-Cansel'
+    environmentServiceNameAWS: 'AWS-Ronesans'
