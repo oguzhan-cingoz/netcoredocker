@@ -16,6 +16,6 @@ resource "aws_instance" "ronesans-poc" {
     instance_type = "t2.micro"
 
     tags = {
-    Name = "ronesans-poc"
+      Name = "ronesans-poc"
   }
 }
