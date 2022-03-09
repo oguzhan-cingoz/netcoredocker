@@ -23,6 +23,10 @@ resource "aws_apprunner_service" "ronesans-poc" {
       image_identifier      = "545579686143.dkr.ecr.eu-west-1.amazonaws.com/ronesans-ecr:309"
       image_repository_type = "ECR"
     }
+    authentication_configuration{
+      access_role_arn = aws_iam_role.role.arn
+    }
+    auto_deployments_enabled = true
   }
 
   tags = {
