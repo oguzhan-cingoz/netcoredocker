@@ -14,17 +14,42 @@ provider "aws" {
 resource "aws_iam_role" "ronesans-apprunner-role" {
   name               = "ronesans-apprunner-role"
   assume_role_policy = jsonencode({
-    Version   = "2012-10-17"
-    Statement = [
-      {
-        Action    = "sts:AssumeRole"
-        Effect    = "Allow"
-        Principal = {
-          Service = "build.apprunner.amazonaws.com"
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iam:CreateServiceLinkedRole",
+      "Resource": [
+        "arn:aws:iam::*:role/aws-service-role/apprunner.amazonaws.com/AWSServiceRoleForAppRunner",
+        "arn:aws:iam::*:role/aws-service-role/networking.apprunner.amazonaws.com/AWSServiceRoleForAppRunnerNetworking"
+      ],
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": [
+            "apprunner.amazonaws.com",
+            "networking.apprunner.amazonaws.com"
+          ]
         }
       }
-    ]
-  })
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "iam:PassedToService": "apprunner.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Sid": "AppRunnerAdminAccess",
+      "Effect": "Allow",
+      "Action": "apprunner:*",
+      "Resource": "*"
+    }
+  ]
+})
 }
 
 resource "aws_iam_role_policy_attachment" "runner_role_policy_attachment" {
