@@ -10,9 +10,8 @@ terraform {
 provider "aws" {
   region = "eu-west-1"
 }
-resource "aws_ecr_repository" "ronesans-ecr" {
-  name                 = "ronesans-ecr"
-  image_tag_mutability = "MUTABLE"
+resource "aws_ecrpublic_repository" "ronesans-ecr-public" {
+  name = "ronesans-ecr-public"
 
   image_scanning_configuration {
     scan_on_push = true
