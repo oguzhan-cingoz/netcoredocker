@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = DotnetDocker
+build_property.ProjectDir = c:\Users\02485517\OneDrive - KocSistem\Desktop\AWS-PoC\aws-ec2-poc\app\
