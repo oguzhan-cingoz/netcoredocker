@@ -29,7 +29,7 @@ resource "aws_iam_role_policy_attachment" "runner_role_policy_attachment" {
 }
 
 resource "aws_apprunner_service" "runner_service" {
-  service_name = local.service_name
+  service_name = "ronesans-apprunner"
   source_configuration {
     authentication_configuration {
       access_role_arn = aws_iam_role.runner_role.arn
