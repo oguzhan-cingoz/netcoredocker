@@ -12,9 +12,37 @@ pool:
 steps:
 
 - task: Docker@2
+  enabled: false
   inputs:
     containerRegistry: 'AWS-Ronesans-ECR'
     repository: 'ronesans-ecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
 
+
+- task: TerraformTaskV2@2
+  displayName: Terraform Init
+  inputs:
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner'
+    backendServiceAWS: 'AWS-Ronesans'
+    backendAWSBucketName: 'ronesans-poc'
+    backendAWSKey: 'ronesans-poc/ronesans-poc.tfstate'
+
+- task: TerraformTaskV2@2
+  displayName: Terraform Plan
+  inputs:
+    provider: 'aws'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner'
+    environmentServiceNameAWS: 'AWS-Ronesans'
+  enabled: false
+
+- task: TerraformTaskV2@2
+  displayName: Terraform Apply
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner'
+    environmentServiceNameAWS: 'AWS-Ronesans'
