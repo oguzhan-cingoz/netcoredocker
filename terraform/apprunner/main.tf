@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+provider "aws" {
+  region = "eu-west-1"
+}
+
 resource "aws_iam_role" "runner_role" {
   name               = "ronesans-apprunner-role"
   assume_role_policy = jsonencode({
