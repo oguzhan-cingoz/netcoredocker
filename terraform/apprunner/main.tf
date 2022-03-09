@@ -18,35 +18,10 @@ resource "aws_iam_role" "ronesans-apprunner-role" {
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": "iam:CreateServiceLinkedRole",
-      "Resource": [
-        "arn:aws:iam::*:role/aws-service-role/apprunner.amazonaws.com/AWSServiceRoleForAppRunner",
-        "arn:aws:iam::*:role/aws-service-role/networking.apprunner.amazonaws.com/AWSServiceRoleForAppRunnerNetworking"
-      ],
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": [
-            "apprunner.amazonaws.com",
-            "networking.apprunner.amazonaws.com"
-          ]
-        }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Action": "iam:PassRole",
-      "Resource": "*",
-      "Condition": {
-        "StringLike": {
-          "iam:PassedToService": "apprunner.amazonaws.com"
-        }
-      }
-    },
-    {
-      "Sid": "AppRunnerAdminAccess",
-      "Effect": "Allow",
-      "Action": "apprunner:*",
-      "Resource": "*"
+      "Principal": {
+        "Service": "tasks.apprunner.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
     }
   ]
 })
