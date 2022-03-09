@@ -22,12 +22,12 @@ steps:
     backendAWSBucketName: 'ronesans-poc'
     backendAWSKey: 'ronesans-poc/ronesans-poc.tfstate'
 
-- task: TerraformTaskV2@2
-  inputs:
-    provider: 'aws'
-    command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-    environmentServiceNameAWS: 'AWS-Cansel'
+#- task: TerraformTaskV2@2
+#  inputs:
+#    provider: 'aws'
+#    command: 'plan'
+#    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+#    environmentServiceNameAWS: 'AWS-Cansel'
 
 - task: TerraformTaskV2@2
   inputs:
