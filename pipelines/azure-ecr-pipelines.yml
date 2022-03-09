@@ -7,7 +7,7 @@ trigger:
 - none
 
 pool:
-  vmImage: macOs-latest
+  vmImage: ubuntu-latest
 
 steps:
 
