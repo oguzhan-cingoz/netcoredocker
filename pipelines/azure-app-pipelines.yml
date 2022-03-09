@@ -23,7 +23,7 @@ steps:
   enabled: true
   inputs:
     containerRegistry: 'AWS-Ronesans-ECR-Public-useast1'
-    repository: 'rronesans-public-ecr'
+    repository: 'ronesans-public-ecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
 
