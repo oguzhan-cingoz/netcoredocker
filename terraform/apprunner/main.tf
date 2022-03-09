@@ -19,7 +19,10 @@ resource "aws_iam_role" "ronesans-apprunner-role" {
     {
       "Effect": "Allow",
       "Principal": {
-        "Service": "tasks.apprunner.amazonaws.com","build.apprunner.amazonaws.com"
+        "Service": [
+           "build.apprunner.amazonaws.com",
+           "tasks.apprunner.amazonaws.com"
+         ]
       },
       "Action": "sts:AssumeRole"
     }
