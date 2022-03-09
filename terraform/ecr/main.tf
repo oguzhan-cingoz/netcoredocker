@@ -13,7 +13,4 @@ provider "aws" {
 resource "aws_ecrpublic_repository" "ronesans-ecr-public" {
   name = "ronesans-ecr-public"
 
-  image_scanning_configuration {
-    scan_on_push = true
-  }
 }
