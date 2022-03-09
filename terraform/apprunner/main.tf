@@ -18,14 +18,10 @@ resource "aws_apprunner_service" "ronesans-poc" {
     image_repository {
       image_configuration {
         port = 5001
-        runtime_environment_variables = {
-          "DOCKER_REGISTRY_SERVER_URL" = "https://ronesans.azurecr.io",
-          "DOCKER_REGISTRY_SERVER_USERNAME" = "ronesans",
-          "DOCKER_REGISTRY_SERVER_PASSWORD" = "k6JhIU/JrtqkLbDuidje/U9WyJVDg7eH"
-        }
+        
       }
-      image_identifier      = "ronesans.azurecr.io/ronesans:306"
-      image_repository_type = "ECR_PUBLIC"
+      image_identifier      = "545579686143.dkr.ecr.eu-west-1.amazonaws.com/ronesans-ecr:309"
+      image_repository_type = "ECR"
     }
   }
 
