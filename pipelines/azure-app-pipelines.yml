@@ -20,7 +20,7 @@ steps:
     Dockerfile: 'app/Dockerfile'
 
 - task: Docker@2
-  enabled: true
+  enabled: false
   inputs:
     containerRegistry: 'AWS-Ronesans-ECR-Public-useast1'
     repository: 'ronesans-public-ecr'
@@ -29,7 +29,7 @@ steps:
 
 
 - task: TerraformTaskV2@2
-  enabled: false
+  enabled: true
   displayName: Terraform Init
   inputs:
     provider: 'aws'
@@ -49,7 +49,7 @@ steps:
     environmentServiceNameAWS: 'AWS-Ronesans'
 
 - task: TerraformTaskV2@2
-  enabled: false
+  enabled: true
   displayName: Terraform Apply
   inputs:
     provider: 'aws'
