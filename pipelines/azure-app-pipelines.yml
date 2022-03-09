@@ -15,15 +15,15 @@ steps:
   enabled: false
   inputs:
     containerRegistry: 'AWS-Ronesans-ECR'
-    repository: 'ronesans-ecr'
+    repository: 'ronesans-public-ecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
 
 - task: Docker@2
   enabled: true
   inputs:
-    containerRegistry: 'AWS-Ronesans-ECR-Public'
-    repository: 'ronesans-ecr-public'
+    containerRegistry: 'AWS-Ronesans-ECR-Public-useast1'
+    repository: 'rronesans-public-ecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
 
