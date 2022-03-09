@@ -30,6 +30,7 @@ steps:
     command: 'plan'
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
     environmentServiceNameAWS: 'AWS-Cansel'
+  enabled: false
 
 - task: TerraformTaskV2@2
   displayName: Terraform Apply
