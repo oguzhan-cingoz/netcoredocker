@@ -11,6 +11,5 @@ provider "aws" {
   region = "eu-west-1"
 }
 resource "aws_ecrpublic_repository" "ronesans-ecr-public" {
-  name = "ronesans-ecr-public"
-
+  repository_name = "ronesans-ecr-public"
 }
