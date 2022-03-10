@@ -17,10 +17,7 @@ resource "aws_iam_role" "ronesansacrrole" {
     Version   = "2012-10-17"
     Statement = [
       {
-        Action = [
-          "apprunner:CreateService",
-          "apprunner:CreateConnection"
-        ]
+        Action    = "sts:AssumeRole"
         Effect    = "Allow"
         Principal = {
           Service = [ 
