@@ -14,20 +14,17 @@ provider "aws" {
 resource "aws_iam_role" "ronesansacrrole" {
   name               = "ronesansacrrole"
   assume_role_policy = jsonencode({
-    Version   = "2012-10-17"
-    Statement = [
-      {
-        Action    = "sts:AssumeRole"
-        Effect    = "Allow"
-        Principal = {
-          Service = [ 
-            "build.apprunner.amazonaws.com",
-            "tasks.apprunner.amazonaws.com"
-          ]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "build.apprunner.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
         }
-      }
     ]
-  })
+})
 }
 
 resource "aws_iam_role_policy_attachment" "ronesansacrrole_policy_attachment" {
