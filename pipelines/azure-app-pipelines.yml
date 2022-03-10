@@ -12,15 +12,15 @@ pool:
 steps:
 
 - task: Docker@2
-  enabled: false
+  enabled: true
   inputs:
     containerRegistry: 'AWS-Ronesans-ECR'
-    repository: 'ronesans-public-ecr'
+    repository: 'ronesans_privateecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
 
 - task: Docker@2
-  enabled: true
+  enabled: false
   inputs:
     containerRegistry: 'AWS-Ronesans-EcrPublic'
     repository: 'u3h5m1q5/ronesans_publicecr'
