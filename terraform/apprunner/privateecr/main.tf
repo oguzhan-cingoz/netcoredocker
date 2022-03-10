@@ -11,8 +11,8 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-resource "aws_iam_role" "ronesansrole" {
-  name = "ronesansrole"
+resource "aws_iam_role" "ronesansroles" {
+  name = "ronesansroles"
 
   assume_role_policy = jsonencode({
     "Version": "2012-10-17",
@@ -28,8 +28,8 @@ resource "aws_iam_role" "ronesansrole" {
 })
 }
 
-resource "aws_iam_role_policy_attachment" "ronesansrolepolicy" {
-  role = aws_iam_role.ronesansrole.id
+resource "aws_iam_role_policy_attachment" "ronesansrolespolicy" {
+  role = aws_iam_role.ronesansroles.id
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppRunnerServicePolicyForECRAccess"
 }
 
@@ -37,7 +37,7 @@ resource "aws_apprunner_service" "ronesans-app-runnerr" {
   service_name = "ronesans-app-runnerr"
   source_configuration {
     authentication_configuration {
-      access_role_arn = "aws_iam_role.ronesansrole.arn"
+      access_role_arn = "${aws_iam_role.ronesansroles.arn}"
     }
     image_repository {
       image_identifier      = "545579686143.dkr.ecr.eu-west-1.amazonaws.com/ronesans_privateecr:21478"
