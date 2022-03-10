@@ -12,7 +12,7 @@ pool:
 steps:
 
 - task: Docker@2
-  enabled: true
+  enabled: false
   inputs:
     containerRegistry: 'AWS-Ronesans-EcrPrivate'
     repository: 'ronesans_privateecr'
