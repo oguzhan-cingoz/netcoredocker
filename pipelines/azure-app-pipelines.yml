@@ -20,7 +20,7 @@ steps:
     Dockerfile: 'app/Dockerfile'
 
 - task: Docker@2
-  enabled: true
+  enabled: false
   inputs:
     containerRegistry: 'AWS-Ronesans-EcrPublic'
     repository: 'ronesans-public-ecr'
