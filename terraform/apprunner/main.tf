@@ -32,7 +32,7 @@ resource "aws_iam_role" "ronesansacrrole" {
 
 resource "aws_iam_role_policy_attachment" "ronesansacrrole_policy_attachment" {
   role       = aws_iam_role.ronesansacrrole.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppRunnerServicePolicyForECRAccess"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppRunnerFullAccess"
 }
 
 resource "aws_apprunner_service" "ronesans-app-runner" {
