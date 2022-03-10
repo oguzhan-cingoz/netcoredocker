@@ -26,7 +26,7 @@ steps:
     repository: 'ronesans_publicecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
-    tags: 'v1'
+    tags: 'latest'
 
 - task: TerraformInstaller@0
   inputs:
