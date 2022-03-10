@@ -8,12 +8,12 @@ terraform {
 }
 
 provider "aws" {
-  alias  = "us_east_1"
-  region = "us-east-1"
+  region = "eu-west-1"
 }
+resource "aws_ecr_repository" "ronesans-ecr" {
+  name                 = "ronesans-ecr"
+  image_tag_mutability = "MUTABLE"
 
-resource "aws_ecr_repository" "ronesans_privateecr" {
-  name                 = "ronesans_privateecr"
   image_scanning_configuration {
     scan_on_push = true
   }
