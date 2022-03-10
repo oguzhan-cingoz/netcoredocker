@@ -16,11 +16,6 @@ variable "apprunner-service-role" {
   default     = "ronesans"
 }
 
-resource "aws_iam_role" "apprunner-service-role" {
-  name               = "${var.apprunner-service-role}AppRunnerECRAccessRole"
-  path               = "/"
-  assume_role_policy = data.aws_iam_policy_document.apprunner-service-assume-policy.json
-}
 
 data "aws_iam_policy_document" "apprunner-service-assume-policy" {
   statement {
@@ -32,6 +27,24 @@ data "aws_iam_policy_document" "apprunner-service-assume-policy" {
     }
   }
 }
+
+data "aws_iam_policy_document" "apprunner-instance-assume-policy" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type = "Service"
+      identifiers = ["tasks.apprunner.amazonaws.com"]
+    }
+  }
+}
+
+resource "aws_iam_role" "apprunner-service-role" {
+  name               = "${var.apprunner-service-role}AppRunnerECRAccessRole"
+  path               = "/"
+  assume_role_policy = data.aws_iam_policy_document.apprunner-service-assume-policy.json
+}
+
 
 resource "aws_iam_role_policy_attachment" "apprunner-service-role-attachment" {
   role       = aws_iam_role.apprunner-service-role.name
@@ -55,16 +68,7 @@ resource "aws_iam_role_policy_attachment" "apprunner-instance-role-attachment" {
   policy_arn = aws_iam_policy.Apprunner-policy.arn
 }
 
-data "aws_iam_policy_document" "apprunner-instance-assume-policy" {
-  statement {
-    actions = ["sts:AssumeRole"]
 
-    principals {
-      type = "Service"
-      identifiers = ["tasks.apprunner.amazonaws.com"]
-    }
-  }
-}
 
 resource "aws_apprunner_service" "ronesans-app-runner" {
   service_name = "ronesans-app-runner"
