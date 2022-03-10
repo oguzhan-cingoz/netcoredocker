@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/nevincansel/.dotnet/store/|arch|/|tfm|",
+      "/Users/nevincansel/.nuget/packages"
+    ]
+  }
+}
