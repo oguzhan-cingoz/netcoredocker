@@ -27,6 +27,9 @@ steps:
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
 
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: 'latest'
 
 - task: TerraformTaskV2@2
   enabled: true
