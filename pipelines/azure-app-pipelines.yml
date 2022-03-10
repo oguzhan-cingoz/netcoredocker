@@ -41,7 +41,7 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/privateecr'
     backendServiceAWS: 'AWS-Ronesans'
     backendAWSBucketName: 'ronesans-poc'
-    backendAWSKey: 'ronesans-poc/ronesans-poc.tfstate'
+    backendAWSKey: 'ronesans-poc/ronesans-poc2.tfstate'
 
 - task: TerraformTaskV2@2
   enabled: false
