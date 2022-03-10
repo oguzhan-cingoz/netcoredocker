@@ -7,7 +7,7 @@ trigger:
 - none
 
 pool:
-  name: KubeOps-DevOps
+  name: DevOpsLinuxPool
 
 steps:
 
