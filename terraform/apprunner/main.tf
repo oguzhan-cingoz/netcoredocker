@@ -18,6 +18,10 @@ resource "aws_iam_role" "ronesansacrrole" {
     Statement = [
       {
         Action    = "sts:AssumeRole"
+        Resource = [
+                "arn:aws:iam::aws:role/my-role",
+                "arn:aws:iam::aws:role/service-role/AppRunnerECRAccessRole"
+            ]
         Effect    = "Allow"
         Principal = {
           Service = [ 
