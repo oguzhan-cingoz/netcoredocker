@@ -10,8 +10,8 @@ terraform {
 provider "aws" {
   region = "eu-west-1"
 }
-resource "aws_ecr_repository" "ronesans-ecr" {
-  name                 = "ronesans-ecr"
+resource "aws_ecr_repository" "ronesans_privateecr" {
+  name                 = "ronesans_privateecr"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
