@@ -34,29 +34,58 @@ steps:
 
 - task: TerraformTaskV2@2
   enabled: true
-  displayName: Terraform Init
+  displayName: Terraform Init private
   inputs:
     provider: 'aws'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/privateecr'
     backendServiceAWS: 'AWS-Ronesans'
     backendAWSBucketName: 'ronesans-poc'
     backendAWSKey: 'ronesans-poc/ronesans-poc.tfstate'
 
 - task: TerraformTaskV2@2
   enabled: false
-  displayName: Terraform Plan
+  displayName: Terraform Plan private
   inputs:
     provider: 'aws'
     command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/privateecr'
     environmentServiceNameAWS: 'AWS-Ronesans'
 
 - task: TerraformTaskV2@2
   enabled: true
-  displayName: Terraform Apply
+  displayName: Terraform Apply private
   inputs:
     provider: 'aws'
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/privateecr'
+    environmentServiceNameAWS: 'AWS-Ronesans'
+
+- task: TerraformTaskV2@2
+  enabled: false
+  displayName: Terraform Init public
+  inputs:
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/publicecr'
+    backendServiceAWS: 'AWS-Ronesans'
+    backendAWSBucketName: 'ronesans-poc'
+    backendAWSKey: 'ronesans-poc/ronesans-poc.tfstate'
+
+- task: TerraformTaskV2@2
+  enabled: false
+  displayName: Terraform Plan public
+  inputs:
+    provider: 'aws'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/publicecr'
+    environmentServiceNameAWS: 'AWS-Ronesans'
+
+- task: TerraformTaskV2@2
+  enabled: false
+  displayName: Terraform Apply public
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/publicecr'
     environmentServiceNameAWS: 'AWS-Ronesans'
