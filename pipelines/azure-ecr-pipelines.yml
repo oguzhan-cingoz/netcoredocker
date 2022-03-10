@@ -7,7 +7,7 @@ trigger:
 - none
 
 pool:
-  name: DevOpsLinuxPipeline
+  name: DevOpsLinuxPool
 
 steps:
 
