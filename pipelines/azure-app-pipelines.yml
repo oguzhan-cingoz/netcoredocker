@@ -20,12 +20,13 @@ steps:
     Dockerfile: 'app/Dockerfile'
 
 - task: Docker@2
-  enabled: false
+  enabled: true
   inputs:
     containerRegistry: 'AWS-Ronesans-EcrPublic'
-    repository: 'ronesanspublicecr'
+    repository: 'ronesans_publicecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
+    tags: 'v1'
 
 - task: TerraformInstaller@0
   inputs:
