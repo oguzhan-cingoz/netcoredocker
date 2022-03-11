@@ -29,7 +29,7 @@ resource "aws_apprunner_service" "ronesans-app-runnerr" {
   service_name = "ronesans-app-runnerr"
   source_configuration {
     authentication_configuration {
-      access_role_arn = aws_iam_role.ronesansrroles.id
+      access_role_arn = "arn:aws:iam::545579686143:role/${aws_iam_role.ronesansrroles.name}"
     }
     image_repository {
       image_identifier      = "545579686143.dkr.ecr.eu-west-1.amazonaws.com/ronesans_privateecr:21478"
