@@ -24,11 +24,14 @@ resource "aws_iam_role_policy_attachment" "ronesansrrolespolicy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppRunnerServicePolicyForECRAccess"
 }
 
+variable "arn" {
+  arnid=aws_iam_role.ronesansrroles.arn
+}
 resource "aws_apprunner_service" "ronesans-app-runnerr" {
   service_name = "ronesans-app-runnerr"
   source_configuration {
     authentication_configuration {
-      access_role_arn = aws_iam_role.ronesansrroles.arn
+      access_role_arn = var.arn.arnid
     }
     image_repository {
       image_identifier      = "545579686143.dkr.ecr.eu-west-1.amazonaws.com/ronesans_privateecr:21478"
