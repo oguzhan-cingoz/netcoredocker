@@ -7,52 +7,85 @@ trigger:
 - none
 
 pool:
-  vmImage: ubuntu-latest
+  name: DevOpsLinuxPool
 
 steps:
 
 - task: Docker@2
   enabled: false
   inputs:
-    containerRegistry: 'AWS-Ronesans-ECR'
-    repository: 'ronesans-public-ecr'
+    containerRegistry: 'AWS-Ronesans-EcrPrivate'
+    repository: 'ronesans_privateecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
 
 - task: Docker@2
   enabled: false
   inputs:
-    containerRegistry: 'AWS-Ronesans-ECR-Public-useast1'
-    repository: 'ronesans-public-ecr'
+    containerRegistry: 'AWS-Ronesans-EcrPublic'
+    repository: 'u3h5m1q5/ronesans_publicecr'
     command: 'buildAndPush'
     Dockerfile: 'app/Dockerfile'
+    tags: '$(Build.BuildId)'
 
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: 'latest'
 
 - task: TerraformTaskV2@2
   enabled: true
-  displayName: Terraform Init
+  displayName: Terraform Init private
   inputs:
     provider: 'aws'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/privateecr'
+    backendServiceAWS: 'AWS-Ronesans'
+    backendAWSBucketName: 'ronesans-poc'
+    backendAWSKey: 'ronesans-poc/ronesans-poc2.tfstate'
+
+- task: TerraformTaskV2@2
+  enabled: false
+  displayName: Terraform Plan private
+  inputs:
+    provider: 'aws'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/privateecr'
+    environmentServiceNameAWS: 'AWS-Ronesans'
+
+- task: TerraformTaskV2@2
+  enabled: true
+  displayName: Terraform Apply private
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/privateecr'
+    environmentServiceNameAWS: 'AWS-Ronesans'
+
+- task: TerraformTaskV2@2
+  enabled: false
+  displayName: Terraform Init public
+  inputs:
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/publicecr'
     backendServiceAWS: 'AWS-Ronesans'
     backendAWSBucketName: 'ronesans-poc'
     backendAWSKey: 'ronesans-poc/ronesans-poc.tfstate'
 
 - task: TerraformTaskV2@2
   enabled: false
-  displayName: Terraform Plan
+  displayName: Terraform Plan public
   inputs:
     provider: 'aws'
     command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/publicecr'
     environmentServiceNameAWS: 'AWS-Ronesans'
 
 - task: TerraformTaskV2@2
-  enabled: true
-  displayName: Terraform Apply
+  enabled: false
+  displayName: Terraform Apply public
   inputs:
     provider: 'aws'
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/apprunner/publicecr'
     environmentServiceNameAWS: 'AWS-Ronesans'

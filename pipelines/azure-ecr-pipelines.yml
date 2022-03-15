@@ -7,7 +7,7 @@ trigger:
 - none
 
 pool:
-  vmImage: ubuntu-latest
+  name: DevOpsLinuxPool
 
 steps:
 
@@ -16,28 +16,58 @@ steps:
     terraformVersion: 'latest'
 
 - task: TerraformTaskV2@2
-  displayName: Terraform Init
+  displayName: Terraform Init for public
+  enabled: false
   inputs:
     provider: 'aws'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/ecr'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/ecr/public'
     backendServiceAWS: 'AWS-Ronesans'
     backendAWSBucketName: 'ronesans-poc'
     backendAWSKey: 'ronesans-poc/ronesans-poc.tfstate'
 
 - task: TerraformTaskV2@2
-  displayName: Terraform Plan
+  displayName: Terraform Plan for public
   inputs:
     provider: 'aws'
     command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/ecr'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/ecr/public'
     environmentServiceNameAWS: 'AWS-Ronesans'
   enabled: false
 
 - task: TerraformTaskV2@2
-  displayName: Terraform Apply
+  displayName: Terraform Apply for public
+  enabled: false
   inputs:
     provider: 'aws'
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/ecr'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/ecr/public'
+    environmentServiceNameAWS: 'AWS-Ronesans'
+
+
+- task: TerraformTaskV2@2
+  displayName: Terraform Init for private
+  inputs:
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/ecr/private'
+    backendServiceAWS: 'AWS-Ronesans'
+    backendAWSBucketName: 'ronesans-poc'
+    backendAWSKey: 'ronesans-poc/ronesans-poc.tfstate'
+
+- task: TerraformTaskV2@2
+  displayName: Terraform Plan for private
+  inputs:
+    provider: 'aws'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/ecr/private'
+    environmentServiceNameAWS: 'AWS-Ronesans'
+  enabled: false
+
+- task: TerraformTaskV2@2
+  displayName: Terraform Apply for private
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/ecr/private'
     environmentServiceNameAWS: 'AWS-Ronesans'

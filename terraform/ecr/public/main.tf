@@ -12,9 +12,9 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_ecrpublic_repository" "ronesans-public-ecr" {
+resource "aws_ecrpublic_repository" "ronesanspublicecr" {
   provider = aws.us_east_1
 
-  repository_name = "ronesans-public-ecr"
+  repository_name = "ronesanspublicecr"
 
 }
