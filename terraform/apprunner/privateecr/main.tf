@@ -1,9 +1,10 @@
 provider "aws" {
   region = "eu-west-1"
 }
-resource "aws_iam_role" "ronesansapprunnerrole" {
-   name = "ronesansapprunnerrole"
-   assume_role_policy = jsonencode(
+
+resource "aws_iam_role" "role" {
+   name = "test-role"
+   assume_role_policy = jsonencode( 
 {
    "Version": "2012-10-17",
    "Statement": [
@@ -19,20 +20,16 @@ resource "aws_iam_role" "ronesansapprunnerrole" {
        "Sid": ""
      }
    ]
- })
+ } )
 }
-
-resource "aws_iam_role_policy_attachment" "ronesansapprunnerrole-attach" {
-   role       = aws_iam_role.ronesansapprunnerrole.name
+resource "aws_iam_role_policy_attachment" "test-attach" {
+   role       = aws_iam_role.role.name
    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppRunnerServicePolicyForECRAccess"
  }
 
-output "caller_arn" {
-  value = "${aws_iam_role.ronesansapprunnerrole.arn}"
-}
 
-resource "aws_apprunner_service" "ronesans-apprunner-service" {
-  service_name = "ronesans_apprunner"
+resource "aws_apprunner_service" "ngnix-apprunner-service-ecr" {
+  service_name = "demo_apprunner"
 
   source_configuration {
     image_repository {
@@ -43,12 +40,12 @@ resource "aws_apprunner_service" "ronesans-apprunner-service" {
       image_repository_type = "ECR"
     }
     authentication_configuration{
-      access_role_arn = aws_iam_role.ronesansapprunnerrole.arn
+      access_role_arn = aws_iam_role.role.arn
     }
     auto_deployments_enabled = true
   }
-
+  
   tags = {
-    Name = "ronesans_apprunner"
+    Name = "demo_apprunner"
   }
 }
