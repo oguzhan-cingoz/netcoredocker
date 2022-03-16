@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dotnetcore
+  namespace: ronesans
 spec:
   replicas: 1
   selector:
@@ -19,9 +20,9 @@ spec:
     spec:
       containers:
       - name: dotnetcore
-        image: ronesans.azurecr.io/aws-poc/aws-poc:VERSION
+        image: public.ecr.aws/u3h5m1q5/ronesans_publicecr:21470
         ports:
-        - containerPort: 5001
+        - containerPort: 80
         resources:
           requests:
             memory: 125M

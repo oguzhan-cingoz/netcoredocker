@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ronesans
+  namespace: ronesans
+automountServiceAccountToken: false
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ronesans-secret
+  namespace: ronesans
+  annotations:
+    kubernetes.io/service-account.name: ronesans
+type: kubernetes.io/service-account-token
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ronesans-role
+  namespace: ronesans
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch", "create", "update","patch","delete"]
+- apiGroups: ["extensions", "apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "create", "update","patch","delete"]
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "list", "watch", "create", "update","patch","delete"]
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get", "list", "watch", "create", "update","patch","delete"]
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["get", "list", "watch", "create", "update","patch","delete"]
+- apiGroups: [""]
+  resources: ["pods/exec"]
+  verbs: ["get"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: global-rolebinding
+  namespace: ronesans
+subjects:
+- kind: ServiceAccount
+  name: ronesans
+  namespace: ronesans
+roleRef:
+  kind: Role
+  name: ronesans-role
+  apiGroup: rbac.authorization.k8s.io
