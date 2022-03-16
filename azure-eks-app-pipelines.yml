@@ -11,6 +11,14 @@ pool:
 
 steps:
 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
