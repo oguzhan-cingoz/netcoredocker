@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: dotnetcore
-        image: ronesans.azurecr.io/aws-poc/aws-poc:VERSION
+        image: public.ecr.aws/u3h5m1q5/ronesans_publicecr:21470
         ports:
         - containerPort: 5001
         resources:
