@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\Ronesans\\AWS\\aws-poc\\app\\DotnetDocker.csproj",
+  "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\AWS-PoC\\aws-poc\\app\\DotnetDocker.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -16,38 +16,38 @@
   "RootNamespace": "DotnetDocker",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\Ronesans\\AWS\\aws-poc\\app\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\Ronesans\\AWS\\aws-poc\\app\\Views\\Shared\\Error.cshtml",
+      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\AWS-PoC\\aws-poc\\app\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\Ronesans\\AWS\\aws-poc\\app\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\Ronesans\\AWS\\aws-poc\\app\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\Ronesans\\AWS\\aws-poc\\app\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\Ronesans\\AWS\\aws-poc\\app\\Views\\_ViewStart.cshtml",
+      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\AWS-PoC\\aws-poc\\app\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\Ronesans\\AWS\\aws-poc\\app\\Views\\Home\\Privacy.cshtml",
+      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\AWS-PoC\\aws-poc\\app\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\AWS-PoC\\aws-poc\\app\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\AWS-PoC\\aws-poc\\app\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\AWS-PoC\\aws-poc\\app\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\02485517\\OneDrive - KocSistem\\Desktop\\AWS-PoC\\aws-poc\\app\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     }
   ],

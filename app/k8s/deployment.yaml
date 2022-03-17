@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetcore
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnetcore
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: dotnetcore
+    spec:
+      containers:
+      - name: dotnetcore
+        image: ronesans.azurecr.io/aws-poc/aws-poc:VERSION
+        ports:
+        - containerPort: 5001
+        resources:
+          requests:
+            memory: 125M
+            cpu: 100m
+          limits:
+            memory: 500M
+            cpu: 300m
+
